@@ -16,7 +16,7 @@ cd frontend/ai-rec
 pip install -r requirements.txt
 ```
 
-## In third terminal run(frontend/ai-rec)
+## In third terminal run(frontend/s)
 ```
 npm init -y
 npm i
