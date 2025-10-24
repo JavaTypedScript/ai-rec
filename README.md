@@ -41,6 +41,6 @@ npm run dev
 
 ## Go to localhost:5173 or frontend luanched port, to view mlflow go to localhost:5000
 
-## Upload dataset and enter into required fields,select ready model and select required fields and click get recommendations
+## Upload dataset(if not with you, use datasets in example_dataset folder) and enter into required fields,select ready model and select required fields and click get recommendations
 
 # Finally Peace
