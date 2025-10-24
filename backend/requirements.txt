@@ -1,7 +1,0 @@
-fastapi
-uvicorn
-joblib
-scikit-learn
-sentence-transformers
-pandas
-numpy
