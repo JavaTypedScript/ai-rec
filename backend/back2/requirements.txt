@@ -1,0 +1,10 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+pandas
+scikit-learn
+mlflow
+scipy
+python-multipart
+aiofiles
+fastapi-cors
