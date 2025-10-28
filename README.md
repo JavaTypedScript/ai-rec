@@ -18,7 +18,6 @@ pip install -r requirements.txt
 
 ## In third terminal run(frontend/s)
 ```
-npm init -y
 npm i
 
 ```
