@@ -18,11 +18,22 @@ import models
 import schemas
 import database
 
+
 # --- Import your classes ---
 from Content import ContentBasedRecommender
 from Collaborative import CollaborativeFilteringRecommender
 # --- Import the MLflow wrapper ---
 from dynamic_recommender import MLflowRecommenderWrapper
+
+import requests
+def notify_webhooks(event, data):
+   
+        url = "http://localhost:5000/api/webhooks/trigger"  # your Node.js webhook microservice
+        try:
+            response = requests.post(url, json={"event": event, "data": data}, timeout=5)
+            print(f"Webhook triggered: {event}, status={response.status_code}")
+        except Exception as e:
+            print(f"⚠️ Webhook trigger failed: {e}")
 
 # --- App Setup & MLflow Configuration (Unchanged) ---
 os.makedirs("user_uploads", exist_ok=True)
@@ -260,7 +271,12 @@ async def process_project(project_id: int, db: Session):
         db_project.status = models.ProjectStatus.READY
         db.commit()
         print(f"[Task {project_id}]: Processing complete.")
-
+        notify_webhooks("model_trained", {
+    "project_id": project_id,
+    "project_name": db_project.project_name,
+    "model_type": db_project.model_type.value,
+    "status": db_project.status.value
+})
     except Exception as e:
         print(f"[Task {project_id}]: ERROR processing project. {e}")
         if db_project:
@@ -420,7 +436,13 @@ def get_recommendations(
         
         if result["error"]:
             raise ValueError(result["error"])
-            
+        # 🔔 Notify external apps when recommendations are generated
+        notify_webhooks("recommendations_generated", {
+        "project_id": project_id,
+        "user_id": user_id,
+        "item_title": item_title,
+        "recommendations": result["recommendations"]
+        })    
         return schemas.RecommendationResponse(
             input_item_title=item_title,
             input_user_id=user_id,
@@ -433,3 +455,5 @@ def get_recommendations(
     except Exception as e:
         print(f"Error loading model or predicting: {e}")
         raise HTTPException(status_code=500, detail=f"Error generating recommendations: {e}")
+    
+    
