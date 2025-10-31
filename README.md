@@ -22,7 +22,14 @@ pip install -r requirements.txt
 npm i
 
 ```
+
+## In fourth terminal 
+
+~~~
+npm init -y
+npm install express sqlite3 axios body-parser cors dotenv
 ## Running the application
+~~~
 
 ### In first terminal(uvicorn)
 ```
@@ -38,7 +45,7 @@ mlflow ui --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlfl
 ```
 npm run dev
 ```
-### Inf fourth terminal(frontend)
+### In fourth terminal(frontend)
 ```
 node server.js
 ```
@@ -47,4 +54,4 @@ node server.js
 
 ## Upload dataset(if not with you, use datasets in example_dataset folder) and enter into required fields,select ready model and select required fields and click get recommendations
 
-# Finally Peace
+
