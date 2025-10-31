@@ -1,6 +1,6 @@
 # How to run this application
 
-## Make 3 terminals
+## Make 4 terminals
 ```
 cd Backend/back2
 ```
@@ -8,6 +8,7 @@ cd Backend/back2
 cd Backend/back2
 ```
 ```
+cd backend/web_services
 cd frontend/ai-rec
 ```
 
@@ -36,6 +37,10 @@ mlflow ui --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlfl
 ### In third terminal(frontend)
 ```
 npm run dev
+```
+### Inf fourth terminal(frontend)
+```
+node server.js
 ```
 
 ## Go to localhost:5173 or frontend luanched port, to view mlflow go to localhost:5000
