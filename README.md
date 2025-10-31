@@ -9,6 +9,8 @@ cd Backend/back2
 ```
 ```
 cd backend/web_services
+```
+```
 cd frontend/ai-rec
 ```
 
@@ -28,8 +30,9 @@ npm i
 ~~~
 npm init -y
 npm install express sqlite3 axios body-parser cors dotenv
-## Running the application
 ~~~
+## Running the application
+
 
 ### In first terminal(uvicorn)
 ```
