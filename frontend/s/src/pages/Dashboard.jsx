@@ -1,5 +1,5 @@
 import React from 'react';
-import AppList from '../components/AppList';
+import AppList from '../components/Applist';
 import RegisterWebhook from '../components/RegisterWebhook';
 
 function Dashboard() {
